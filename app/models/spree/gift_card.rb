@@ -1,4 +1,4 @@
-require 'spree/core/validators/email'
+# require 'spree/core/validators/email'
 
 module Spree
   class GiftCard < ActiveRecord::Base
@@ -14,6 +14,8 @@ module Spree
     belongs_to :line_item, required: false
 
     has_many :transactions, class_name: 'Spree::GiftCardTransaction'
+
+    enum created_by: { user: 0, admin: 1 }
 
     validates :current_value, :name, :original_value, :code, :email, presence: true
 
