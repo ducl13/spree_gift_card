@@ -17,14 +17,12 @@ if Spree::Product.gift_cards.count == 0
     variant.option_values << option_value
     product.variants << variant
   end
+  product.stores << Spree::Store.default
   product.save
 
 end
 unless Spree::PaymentMethod::GiftCard.all.exists?
-  Spree::PaymentMethod::GiftCard.create(
-    name: "Gift Card",
-    description: "Pay by Gift Card",
-    active: true,
-    display_on: :both
-  )
+  payment_method = Spree::PaymentMethod::GiftCard.new( name: "Gift Card", description: "Pay by Gift Card", active: true, display_on: :both)
+  payment_method.stores << Spree::Store.default
+  payment_method.save
 end
