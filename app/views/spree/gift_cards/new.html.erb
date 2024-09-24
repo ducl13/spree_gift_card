@@ -1,7 +1,7 @@
 <main class="main-contents">
   <div class="container">
     <fieldset>
-      <legend align="center"><%= Spree.t(:gift_cards) %> </legend>
+      <legend><%= Spree.t(:gift_cards) %> </legend>
       <%= render "spree/shared/error_messages", target: @gift_card %>
       <%= form_for @gift_card do |f| %>
         <div class="col-md-6 col-md-offset-3">

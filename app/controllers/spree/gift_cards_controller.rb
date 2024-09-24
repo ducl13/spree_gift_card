@@ -30,6 +30,7 @@ module Spree
           line_item.price = @gift_card.variant.price
           # Add to order
           order = current_order(create_order_if_necessary: true)
+          line_item.currency = order.currency
           order.line_items << line_item
           line_item.order = order
           order.update_totals
